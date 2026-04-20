@@ -1,2 +1,37 @@
 import caperucita.*
 import lobo.*
+
+
+describe "El lobo Feroz" {
+  test "El lobo va corriendo al bosque" {
+    feroz.ferozCorre()
+    assert.equals(9, feroz.peso())
+  }
+  test "El lobo ve a la abuelita y se la come" {
+    feroz.ferozCome(abuelita)
+  }
+  test "El lobo aumenta peso por haberse comido a la abuelita" {
+    assert.equals(13, feroz.peso())
+  }
+test "Caperucita cruza el bosque y se le cae una manzana" {
+    caperucita.perderManzana()
+    assert.equals(61,caperucita.peso())
+}
+test "El lobo se come a caperucita" {
+    feroz.ferozCome(caperucita)
+    assert.notThat(caperucita.estaViva())
+}
+test "El lobo aumenta de peso por haberse comido a caperucita"{
+    assert.equals(19.1 , feroz.peso())
+}
+
+test "Cazador mata al lobo" {
+    cazador.obtieneCuchillo()
+    assert.equals(95, cazador.peso())
+    cazador.peleaFeroz()
+    assert.notThat(feroz.ferozMuere())
+  
+}
+
+
+}
