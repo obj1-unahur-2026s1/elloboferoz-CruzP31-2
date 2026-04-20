@@ -1,40 +1,46 @@
 import lobo.*
 object caperucita {
-    var peso = 60
     var cantManzanas = 6
     const pesoManzana = 0.2
     var estaViva = true
-    method peso()= peso + (cantManzanas*pesoManzana)
+    method peso()= 60 + (cantManzanas*pesoManzana)
     method perderManzana(){
         cantManzanas = 0.max(cantManzanas - 1)
         }
     method estaViva()= estaViva
+    method muerte(){
+        estaViva = false
+    }
 }
 object abuelita {
     method peso()= 50
     var estaViva = true
-    method estaViva()= estaViva 
+    method estaViva()= estaViva
+    method muerte(){
+        estaViva = false
+    }
 }
 
 
 object cazador {
-    var peso = 90
+    method peso()= 90
     var estaVivo = true
-    const cuchillo = 5
+    var tieneCuchillo = false
     method estaVivo() = estaVivo
-    method obtieneCuchillo() {
-        peso= peso + cuchillo
-    }
-    method cazadorMuere(){
+    method muerte(){
         estaVivo = false
     }
+    method obtieneCuchillo(){
+        tieneCuchillo = true
+    }
+
     method peleaFeroz(){
-        if(peso== 95){
-            feroz.ferozMuere()
+        if(tieneCuchillo== true){
+            feroz.muerte()
         }
         else{
             feroz.ferozCome(self)
-            self.cazadorMuere()
+            self.muerte()
 
         }
     }

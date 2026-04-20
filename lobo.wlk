@@ -2,15 +2,13 @@ object feroz {
     var peso = 10
     method peso()= peso
     var estaVivo = true
+    method estaVivo()= estaVivo
     method estaSaludable()= peso.between(20, 150)
     method aumentarPeso(cantidad) { 
         peso += cantidad
         }
     method pierdePeso(cantidad) {
         peso = 0.max(peso - cantidad)
-        if (peso == 0) {
-            self.ferozMuere()
-        } 
     }
     method ferozCorre() {
         self.pierdePeso(1)
@@ -20,11 +18,12 @@ object feroz {
     }
     method ferozCome(comida) {
         self.aumentarPeso(comida.peso()*0.1)
+        comida.muerte()
     }
     
-    method ferozMuere(){
+    method muerte(){
         estaVivo = false
-} 
+        } 
 }
 
 
